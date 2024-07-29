@@ -35,6 +35,7 @@ class AuthViewModel: ObservableObject {
     func signIn(withEmail email: String, password: String) async throws {
 //        print("sign in")
         do {
+            print("log in")
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = result.user
             await fetchUser()
@@ -73,7 +74,11 @@ class AuthViewModel: ObservableObject {
     
     func fetchUser() async {
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else {return}
+        guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else {
+//            print("failed to get")
+            return
+        }
+//        print(snapshot.data().map(String.init(describing:)))
         self.currentUser = try? snapshot.data(as: User.self)
         print("DEBUG: Current user is \(String(describing: self.currentUser))")
     }
