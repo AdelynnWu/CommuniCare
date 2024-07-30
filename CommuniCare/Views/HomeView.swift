@@ -9,9 +9,10 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var searchText: String = ""
-        @State private var clinics = clinicsData
+    @State private var clinics = clinicsData
     @AppStorage("firstName") var userFirstName: String?
-        
+    @ObservedObject var viewModel: HomeViewViewModel
+    
         var body: some View {
             NavigationView {
                 VStack {
@@ -62,7 +63,7 @@ struct HomeView: View {
                     
                     // Clinics List
                     ScrollView {
-                        ForEach(clinics) { clinic in
+                        ForEach(viewModel.clinics) { clinic in
                             ClinicCard(clinic: clinic)
                                 .padding(.horizontal)
                                 .padding(.bottom, 10)
@@ -82,7 +83,7 @@ struct HomeView: View {
                                     .foregroundStyle(Color.matchaGreen)
                             }
                             Spacer()
-                            NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true)){
+                            NavigationLink(destination: HomeView(viewModel: HomeViewViewModel()).navigationBarBackButtonHidden(true)){
                                 Image(systemName: "house")
                                     .resizable()
                                     .frame(width: 27, height: 27, alignment: .center)
@@ -106,5 +107,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(viewModel: HomeViewViewModel())
 }

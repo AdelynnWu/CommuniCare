@@ -92,7 +92,7 @@ struct AddressView: View {
                     .overlay(Color.matchaGreen, in: .rect(cornerRadius: 18).stroke(lineWidth: 2))
                     .padding()
                 
-                NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true), isActive: $navigated){
+                NavigationLink(destination: HomeView(viewModel: HomeViewViewModel()).navigationBarBackButtonHidden(true), isActive: $navigated){
                     LargeButton(title: "Next",
                                 backgroundColor: Color.darkGreen) {
                         // action when pressed

@@ -46,7 +46,7 @@ struct LocationAccessView: View {
                 Spacer().frame(height: 50)
                 
                 VStack{
-                    NavigationLink(destination: HomeView(), isActive: $navigated) {
+                    NavigationLink(destination: HomeView(viewModel: HomeViewViewModel()), isActive: $navigated) {
                         Button {
                             // request access
                             LocationManager.shared.requestLocation()
@@ -63,7 +63,7 @@ struct LocationAccessView: View {
                         .padding()
                     }
                     
-                    NavigationLink(destination: HomeView(), isActive: $navigated) {
+                    NavigationLink(destination: HomeView(viewModel: HomeViewViewModel()), isActive: $navigated) {
                         Button {
                             //Add logic here
                             self.navigated.toggle()

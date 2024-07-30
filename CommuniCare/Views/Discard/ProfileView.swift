@@ -175,7 +175,7 @@ extension ProfileView {
                         .foregroundStyle(Color.matchaGreen)
                 }
                 Spacer()
-                NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true)){
+                NavigationLink(destination: HomeView(viewModel: HomeViewViewModel()).navigationBarBackButtonHidden(true)){
                     Image(systemName: "house")
                         .resizable()
                         .frame(width: 32, height: 32, alignment: .center)

@@ -51,7 +51,7 @@ struct RegistrationView: View {
                 case 2:
                 addressForm.transition(transition)
                 default:
-                    HomeView()
+                HomeView(viewModel: HomeViewViewModel())
             }
         }.alert(isPresented: $showAlert) {
             return Alert(title: Text(alertTitle))

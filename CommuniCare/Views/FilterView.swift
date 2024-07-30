@@ -18,7 +18,7 @@ struct FilterView: View {
                 VStack(alignment: .leading) {
                     // Header
                     HStack {
-                        NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true)){
+                        NavigationLink(destination: HomeView(viewModel: HomeViewViewModel()).navigationBarBackButtonHidden(true)){
                             Image(systemName: "chevron.left").foregroundColor(.white)
                         }
                         Spacer()
@@ -73,7 +73,7 @@ struct FilterView: View {
                     
                     // Buttons
                     HStack {
-                        NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true), isActive: $resetNavigated){
+                        NavigationLink(destination: HomeView(viewModel: HomeViewViewModel()).navigationBarBackButtonHidden(true), isActive: $resetNavigated){
                             Button(action: {
                                 // Reset Action
                                 selectedDistance.removeAll()

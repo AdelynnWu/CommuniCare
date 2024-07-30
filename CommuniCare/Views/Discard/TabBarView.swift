@@ -17,7 +17,7 @@ struct TabBarView: View {
             }
             
             NavigationStack{
-                HomeView().navigationBarBackButtonHidden(true)
+                HomeView(viewModel: HomeViewViewModel()).navigationBarBackButtonHidden(true)
             }.tabItem {
                 Label("Home", image: "homeIcon")
             }

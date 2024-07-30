@@ -7,6 +7,39 @@
 
 import Foundation
 import SwiftUI
+import Firebase
+import FirebaseFirestore
+
+// fetch clinic data from database
+@MainActor
+class HomeViewViewModel: ObservableObject {
+    
+    @Published var clinics: [Clinic] = []
+    
+    init() {
+        Task {
+            await fetchClinics()
+        }
+    }
+    
+    func fetchClinics() async {
+        do {
+            guard let querySnapshot = try? await Firestore.firestore().collection("clinics").getDocuments() else {
+                print("Failed to fetch the collection")
+                return
+            }
+            
+            for document in querySnapshot.documents {
+                print(document.data().map(String.init(describing:)))
+                self.clinics.append(try document.data(as: Clinic.self))
+            }
+        } catch {
+            print("DEBUG: Failed to fetch clinic data \(error.localizedDescription)")
+        }
+    }
+    
+}
+
 
 struct ClinicCard: View {
     @Environment(\.openURL) var openURL
@@ -25,11 +58,11 @@ struct ClinicCard: View {
                     )
                 VStack(alignment: .leading) {
                     // Clinic Name and Distance
-                    Text(clinic.name)
+                    Text(clinic.id)
                         .font(.headline)
                     HStack {
                         Image(systemName: "location.fill")
-                        Text(clinic.distance)
+                        Text(clinic.address)
                     }
                     .foregroundColor(.gray)
                     
@@ -50,7 +83,7 @@ struct ClinicCard: View {
                         }
                         Button(action: {
                             // Action for Visit Site
-                            openURL(URL(string: clinic.websiteUrl)!)
+                            openURL(URL(string: clinic.website)!)
                         }) {
                             Text("Visit Site")
                                 .font(.system(size: 15))
@@ -72,7 +105,7 @@ struct ClinicCard: View {
                 .bold()
                 .padding(.bottom, 1)
                 .offset(x: 16)
-            ForEach(clinic.services, id: \.self) { service in
+            ForEach(clinic.clinicalServices, id: \.self) { service in
                 Text("• \(service)")
             }
             .padding(.bottom, 5)
