@@ -65,6 +65,7 @@ struct ClinicCard: View {
                         Text(clinic.address)
                     }
                     .foregroundColor(.gray)
+                    // TODO: implement distance from you
                     
                     // Action Buttons
                     HStack {
@@ -100,13 +101,22 @@ struct ClinicCard: View {
             }
             .padding()
             
+            // payment method
+            Text("Payment Method")
+                .bold()
+                .padding(.bottom, 1)
+                .offset(x: 16)
+            Text(clinic.paymentModel)
+                .padding(.bottom, 5)
+                .offset(x: 16)
+            
             // Services
             Text("Services")
                 .bold()
                 .padding(.bottom, 1)
                 .offset(x: 16)
-            ForEach(clinic.clinicalServices, id: \.self) { service in
-                Text("• \(service)")
+            ForEach(clinic.clinicalServices.prefix(3), id: \.self) { service in
+                    Text("• \(service)")
             }
             .padding(.bottom, 5)
             .offset(x: 16)
