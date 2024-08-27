@@ -137,7 +137,9 @@ extension RegistrationView {
             ){
                 Text("Male").foregroundStyle(Color.black).tag("Male")
                 Text("Female").foregroundStyle(Color.black).tag("Female")
-                Text("Non-binary").foregroundStyle(Color.black).tag("Non-binary")
+                Text("Transgender").foregroundStyle(Color.black).tag("Transgender")
+                Text("Non-binary").foregroundStyle(Color.black).tag("Non-binary/Non-conforming")
+                Text("Prefer not to answer").foregroundStyle(Color.black).tag("Prefer not to answer")
             }.pickerStyle(MenuPickerStyle())
                 .frame(width: 360, height: 50)
                 .overlay {
