@@ -8,11 +8,10 @@
 import Foundation
 
 enum Distance: String, CaseIterable {
-    case lessThanOneMile = "< 1 mile"
-    case oneToThreeMiles = "1 - 3 miles"
-    case threeToFiveMiles = "3 - 5 miles"
-    case fiveToSevenMiles = "5 - 7 miles"
-    case moreThanSevenMiles = "> 7 miles"
+    case lessThanFiveMile = "5 miles"
+    case fiveToTenMiles = "10 miles"
+    case tenToFifteenMiles = "15 miles"
+    case moreThanTwentyMiles = "20+ miles"
 }
 
 enum MedicalHistory: String, CaseIterable {
@@ -21,4 +20,11 @@ enum MedicalHistory: String, CaseIterable {
     case diabetes = "Diabetes"
     case kidneyDisease = "Kidney Disease"
     case obesity = "Obesity"
+}
+
+enum Language: String, CaseIterable {
+    case english = "English"
+    case spanish = "Spanish"
+    case madarin = "Mandarin"
+    case others = "Others"
 }

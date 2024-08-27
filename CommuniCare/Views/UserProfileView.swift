@@ -10,6 +10,9 @@ import SwiftUI
 struct UserProfileView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     
+    @State var alertTitle: String = ""
+    @State var showAlert: Bool = false
+    
     var body: some View {
         ZStack {
             if let user = viewModel.currentUser {
@@ -119,6 +122,9 @@ struct UserProfileView: View {
                         }
                         Button {
                             // delete account
+                            Task {
+                                try await viewModel.deleteAccount()
+                            }
                         } label: {
                             SettingsRowView(imageName: "xmark.circle.fill", title: "Delete Account", tintColor: .red)
                         }
@@ -168,5 +174,13 @@ extension UserProfileView {
                 Spacer()
             }
         }
+    }
+}
+
+// MARK: Functions
+extension UserProfileView {
+    func showAlert(title: String) {
+        alertTitle = title
+        showAlert.toggle()
     }
 }

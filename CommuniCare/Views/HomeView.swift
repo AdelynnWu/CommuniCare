@@ -10,8 +10,8 @@ import SwiftUI
 struct HomeView: View {
     @State private var searchText: String = ""
     @State private var clinics = clinicsData
-    @AppStorage("firstName") var userFirstName: String?
     @ObservedObject var viewModel: HomeViewViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
         var body: some View {
             NavigationView {
@@ -23,7 +23,7 @@ struct HomeView: View {
                         HStack {
                             Image(systemName: "leaf.fill")
                                 .foregroundColor(Color.darkGreen)
-                            Text("Welcome back, " + (userFirstName ?? "April") + "!")
+                            Text("Welcome back, " + ( authViewModel.currentUser?.firstName ?? "") + "!")
                                 .font(.system(size: 18))
                                 .foregroundStyle(Color.white)
                                 .bold()

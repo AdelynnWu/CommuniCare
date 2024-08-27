@@ -30,6 +30,26 @@ class AuthViewModel: ObservableObject {
         Task {
             await fetchUser()
         }
+        
+        let db = Firestore.firestore()
+        db.collection("users").addSnapshotListener { (snap, err) in
+            if err != nil {
+                print("DEBUG: " + (err!.localizedDescription))
+            }
+            for i in snap!.documentChanges {
+//                let dbId = i.document.get("id") as! String
+                // let dbBmClinics = i.document.get("bmClinics") as! [String]
+                if i.type == .added {
+                    print("added")
+                }
+                if i.type == .modified {
+                    print("modified")
+                }
+                if i.type == .removed {
+                    print("removed")
+                }
+            }
+        }
     }
     
     func signIn(withEmail email: String, password: String) async throws {
@@ -68,8 +88,13 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func deleteAccount() {
-        
+    func deleteAccount() async throws {
+        guard let user = Auth.auth().currentUser else {
+            throw URLError(.badURL)
+        }
+        try await user.delete()
+        self.userSession = nil // wipes out user session, back to the startView
+        self.currentUser = nil // wipes out current user data model
     }
     
     func fetchUser() async {

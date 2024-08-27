@@ -27,7 +27,6 @@
 		D800FE572C2C1E5500D6AE64 /* LocationAccessViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D800FE562C2C1E5500D6AE64 /* LocationAccessViewViewModel.swift */; };
 		D800FE592C2C1E6200D6AE64 /* HomeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D800FE582C2C1E6200D6AE64 /* HomeViewViewModel.swift */; };
 		D800FE5B2C2C1E7300D6AE64 /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D800FE5A2C2C1E7300D6AE64 /* LoginViewViewModel.swift */; };
-		D800FE5D2C2C1E8500D6AE64 /* ClinicCollectionViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D800FE5C2C2C1E8500D6AE64 /* ClinicCollectionViewViewModel.swift */; };
 		D800FE602C2D1C0800D6AE64 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D800FE5F2C2D1C0700D6AE64 /* ColorExtension.swift */; };
 		D800FE622C2D513D00D6AE64 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = D800FE612C2D513D00D6AE64 /* Button.swift */; };
 		D800FE642C2D55C700D6AE64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D800FE632C2D55C700D6AE64 /* GoogleService-Info.plist */; };
@@ -79,7 +78,6 @@
 		D800FE562C2C1E5500D6AE64 /* LocationAccessViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAccessViewViewModel.swift; sourceTree = "<group>"; };
 		D800FE582C2C1E6200D6AE64 /* HomeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewModel.swift; sourceTree = "<group>"; };
 		D800FE5A2C2C1E7300D6AE64 /* LoginViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
-		D800FE5C2C2C1E8500D6AE64 /* ClinicCollectionViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicCollectionViewViewModel.swift; sourceTree = "<group>"; };
 		D800FE5F2C2D1C0700D6AE64 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		D800FE612C2D513D00D6AE64 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		D800FE632C2D55C700D6AE64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 				D800FE562C2C1E5500D6AE64 /* LocationAccessViewViewModel.swift */,
 				D800FE582C2C1E6200D6AE64 /* HomeViewViewModel.swift */,
 				D800FE5A2C2C1E7300D6AE64 /* LoginViewViewModel.swift */,
-				D800FE5C2C2C1E8500D6AE64 /* ClinicCollectionViewViewModel.swift */,
 				D874DA562C43BD5A007F3172 /* CheckBoxView.swift */,
 				D874DA582C43BD7F007F3172 /* FilterViewViewModel.swift */,
 				D874DA712C53AA36007F3172 /* AuthViewModel.swift */,
@@ -385,7 +382,6 @@
 				D800FE532C2C1E3C00D6AE64 /* RegisterViewViewModel.swift in Sources */,
 				D800FE432C2C1D1C00D6AE64 /* LocationAccessView.swift in Sources */,
 				D874DA4B2C43AE1E007F3172 /* NotificationView.swift in Sources */,
-				D800FE5D2C2C1E8500D6AE64 /* ClinicCollectionViewViewModel.swift in Sources */,
 				D874DA5F2C4A38A6007F3172 /* LocationManager.swift in Sources */,
 				D874DA612C4A678D007F3172 /* BookmarkClinicsView.swift in Sources */,
 				D8E4CA412C2BDC5C00FDE1AA /* CommuniCareApp.swift in Sources */,

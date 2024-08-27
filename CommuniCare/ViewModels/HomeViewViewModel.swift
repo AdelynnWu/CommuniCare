@@ -30,7 +30,7 @@ class HomeViewViewModel: ObservableObject {
             }
             
             for document in querySnapshot.documents {
-                print(document.data().map(String.init(describing:)))
+                // print(document.data().map(String.init(describing:)))
                 self.clinics.append(try document.data(as: Clinic.self))
             }
         } catch {
