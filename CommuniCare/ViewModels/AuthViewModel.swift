@@ -67,9 +67,9 @@ class AuthViewModel: ObservableObject {
     func createUser(withEmail email: String, password: String, firstName: String, lastName: String, age: Int, sex: String, insurance: String, policy: String, address: String, city: String, state: String, zipCode: String) async throws {
 //        print("create user")
         do {
-            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            let result = try await Auth.auth().createUser(withEmail: email+"@mydomain.com", password: password)
             self.userSession = result.user
-            let user = User(id: result.user.uid, email: email, lastName: lastName, firstName: firstName, age: age, sex: sex, address: address, city: city, state: state, zipCode: zipCode, insurance: insurance, policy: policy)
+            let user = User(id: result.user.uid, email: email+"@mydomain.com", lastName: lastName, firstName: firstName, age: age, sex: sex, address: address, city: city, state: state, zipCode: zipCode, insurance: insurance, policy: policy)
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
             await fetchUser()

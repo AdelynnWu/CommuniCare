@@ -36,35 +36,6 @@ struct LoginView: View {
                 
                 InputView(text: $password, title: "Password", placeholder: "Enter your password", isSucureField: true).padding(.top, 10)
                 
-//            Text("Email")
-//                .font(.system(size: 15))
-//                .multilineTextAlignment(.leading)
-//                .frame(maxWidth: .infinity, alignment: .leading)
-//                .padding(.leading, 15)
-//                .padding(.leading, 15)
-//            
-//            Spacer().frame(maxHeight: 0)
-//            
-//            TextField("ex. abc123@gmail.com", text: $viewModel.email)
-//                .autocapitalization(.none)
-//                .padding()
-//                .overlay(Color.matchaGreen, in: .rect(cornerRadius: 18).stroke(lineWidth: 2))
-//                .padding()
-            
-//            Text("Password")
-//                .font(.system(size: 15))
-//                .multilineTextAlignment(.leading)
-//                .frame(maxWidth: .infinity, alignment: .leading)
-//                .padding(.leading, 15)
-//                .padding(.leading, 15)
-//            
-//            Spacer().frame(maxHeight: 0)
-//            
-//            SecureField("", text: $viewModel.password)
-//                .autocapitalization(.none)
-//                .padding()
-//                .overlay(Color.matchaGreen, in: .rect(cornerRadius: 18).stroke(lineWidth: 2))
-//                .padding()
             }.padding(.horizontal)
             .offset(y: -145)
             
@@ -89,6 +60,7 @@ struct LoginView: View {
 // MARK: AuthenticationFormProtocol
 extension LoginView: AuthenticationFormProtocol {
     var formIsValid: Bool {
-        return !email.isEmpty && email.contains("@") && !password.isEmpty && password.count > 5
+        return !password.isEmpty && password.count > 5
+//        return !email.isEmpty && email.contains("@") && !password.isEmpty && password.count > 5
     }
 }

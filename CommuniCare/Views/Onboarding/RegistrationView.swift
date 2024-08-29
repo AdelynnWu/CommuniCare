@@ -28,6 +28,7 @@ struct RegistrationView: View {
     @State var email: String = ""
     @State var firstName: String = ""
     @State var lastName: String = ""
+    @State var username: String = ""
     @State var password: String = ""
     @State var confirmPassword: String = ""
     @State var age: Int = 0
@@ -157,7 +158,7 @@ extension RegistrationView {
             registerText
             descriptionText
             VStack {
-                InputView(text: $email, title: "Email", placeholder: "abc123@gmail.com")
+                InputView(text: $email, title: "Username", placeholder: "john123")
                     .autocapitalization(.none)
                 .padding(.top, 25)
             InputView(text: $firstName, title: "First Name", placeholder: "John")
@@ -293,7 +294,8 @@ extension RegistrationView {
 // MARK: AuthenticationFormProtocol
 extension RegistrationView: RegistrationFormProtocol {
     var form1IsValid: Bool {
-        return !email.isEmpty && email.contains("@") && !password.isEmpty && password.count > 5 && !lastName.isEmpty && !firstName.isEmpty && confirmPassword == password
+        return !password.isEmpty && password.count > 5 && !lastName.isEmpty && !firstName.isEmpty && confirmPassword == password
+//        return !email.isEmpty && email.contains("@") && !password.isEmpty && password.count > 5 && !lastName.isEmpty && !firstName.isEmpty && confirmPassword == password
     }
     
     var form2IsValid: Bool {
