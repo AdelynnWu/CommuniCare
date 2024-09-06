@@ -15,7 +15,7 @@ CommuniCare is a centralized hub where you can find health care services nearby 
 <img width="250" alt="Simulator Screenshot - iPhone 15 - 2024-09-06 at 15 34 33" src="https://github.com/user-attachments/assets/d13ce128-d493-44d1-8984-2a4043fd444f">
 
 #### Profile Page
-<img width="250" alt="Simulator Screenshot - iPhone 15 - 2024-09-06 at 15 34 33" src="https://github.com/user-attachments/assets/1a803917-b328-49a3-b217-c010b1174caf">
+<img width="250" alt="Simulator Screenshot - iPhone 15 - 2024-09-06 at 15 34 33" src="https://github.com/user-attachments/assets/6e39bc9f-573b-48ba-b899-2e60af9eeb68">
 
 #### Test the App (on a simulator)
 1. Clone the repository to your personal device.
