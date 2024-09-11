@@ -53,18 +53,18 @@ struct AboutView: View {
                         .padding(.leading, 15)
                 }
                 
-                Text("Age")
-                    .font(.system(size: 15))
-                    .multilineTextAlignment(.leading)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 15)
-                    .padding(.leading, 15)
-                
+//                Text("Age")
+//                    .font(.system(size: 15))
+//                    .multilineTextAlignment(.leading)
+//                    .frame(maxWidth: .infinity, alignment: .leading)
+//                    .padding(.leading, 15)
+//                    .padding(.leading, 15)
+//                
 
-                TextField("", value: $viewModel.age, formatter: NumberFormatter())
-                    .padding()
-                    .overlay(Color.matchaGreen, in: .rect(cornerRadius: 18).stroke(lineWidth: 2))
-                    .padding()
+//                TextField("", value: $viewModel.age, formatter: NumberFormatter())
+//                    .padding()
+//                    .overlay(Color.matchaGreen, in: .rect(cornerRadius: 18).stroke(lineWidth: 2))
+//                    .padding()
                 
                 // Spacer().frame(height: 30)
                 
@@ -125,7 +125,7 @@ struct AboutView: View {
                     LargeButton(title: "Next",
                                 backgroundColor: Color.darkGreen) {
                          print("next button")
-                        viewModel.sex = genders[sexIndex]
+                        viewModel.gender = genders[sexIndex]
                         self.navigated.toggle()
                     }
                 }

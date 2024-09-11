@@ -29,16 +29,10 @@ class ProfileViewViewModel: ObservableObject {
                 // since assigning a new user will trigger a view refresh
                 self?.user = User(id: data["id"] as? String ?? "",
                                   email: data["email"] as? String ?? "",
-                                  lastName: data["lastName"] as? String ?? "",
-                                  firstName: data["firstName"] as? String ?? "",
-                                  age: data["age"] as? Int ?? 0,
-                                  sex: data["sex"] as? String ?? "",
-                                  address: data["address"] as? String ?? "",
-                                  city: data["city"] as? String ?? "",
-                                  state: data["state"] as? String ?? "",
-                                  zipCode: data["zipCode"] as? String ?? "",
-                                  insurance: data["insurance"] as? String ?? "",
-                                  policy: data["policy"] as? String ?? "")
+                                  gender: data["gender"] as? String ?? "",
+                                  insuranceStatus: data["insuranceStatus"] as? String ?? "",
+                                  policyName: data["policyName"] as? String ?? "",
+                                  service: data["service"] as? [String] ?? [""])
             }
 
         }

@@ -23,7 +23,7 @@ struct HomeView: View {
                         HStack {
                             Image(systemName: "leaf.fill")
                                 .foregroundColor(Color.darkGreen)
-                            Text("Welcome back, " + ( authViewModel.currentUser?.firstName ?? "") + "!")
+                            Text("Welcome back, " + ( authViewModel.currentUser?.email.components(separatedBy: "@")[0] ?? "") + "!")
                                 .font(.system(size: 18))
                                 .foregroundStyle(Color.white)
                                 .bold()

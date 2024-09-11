@@ -20,7 +20,7 @@ struct UserProfileView: View {
                 List {
                     Section {
                         HStack {
-                            Text(user.initials)
+                            Text(user.email.first?.description ?? "")
                                 .font(.title)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(.white)
@@ -28,12 +28,12 @@ struct UserProfileView: View {
                                 .background(Color(.systemGray3))
                                 .clipShape(Circle())
                             VStack(alignment: .leading, spacing: 4) {
-                                Text(user.firstName + " " + user.lastName)
+                                Text(user.email.components(separatedBy: "@")[0])
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
                                     .padding(.top, 4)
                                 
-                                Text(user.email)
+                                Text("CommuniCare User")
                                     .font(.footnote)
                                     .foregroundStyle(Color.gray)
                             }

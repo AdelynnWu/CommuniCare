@@ -26,9 +26,6 @@ struct RegistrationView: View {
     @State var showAlert: Bool = false
     
     @State var email: String = ""
-    @State var firstName: String = ""
-    @State var lastName: String = ""
-    @State var username: String = ""
     @State var password: String = ""
     @State var confirmPassword: String = ""
     @State var age: Int = 0
@@ -49,8 +46,6 @@ struct RegistrationView: View {
                 registerForm.transition(transition)
                 case 1:
                 aboutForm.transition(transition)
-                case 2:
-                addressForm.transition(transition)
                 default:
                 HomeView(viewModel: HomeViewViewModel())
             }
@@ -161,8 +156,8 @@ extension RegistrationView {
                 InputView(text: $email, title: "Username", placeholder: "john123")
                     .autocapitalization(.none)
                 .padding(.top, 25)
-            InputView(text: $firstName, title: "First Name", placeholder: "John")
-            InputView(text: $lastName, title: "Last Name", placeholder: "Simpson")
+//            InputView(text: $firstName, title: "First Name", placeholder: "John")
+//            InputView(text: $lastName, title: "Last Name", placeholder: "Simpson")
             InputView(text: $password, title: "Password", placeholder: "Enter your password", isSucureField: true)
                 ZStack(alignment: .trailing) {
                     InputView(text: $confirmPassword, title: "Confirm Password", placeholder: "Confirm your password", isSucureField: true)
@@ -221,11 +216,10 @@ extension RegistrationView {
                         .padding(.leading, 15)
                 }
                 
-                ageField
                 genderPicker
                 InputView(text: $insurance, title: "Health Insurance Plan", placeholder: "")
                 InputView(text: $policy, title: "Policy Name", placeholder: "")
-                InputView(text: $distance, title: "Distance Preference", placeholder: "")
+//                InputView(text: $distance, title: "Distance Preference", placeholder: "")
                 nextButton.disabled(!form2IsValid).opacity(form2IsValid ? 1.0 : 0.5)
             }.offset(y: -25)
         }
@@ -273,10 +267,10 @@ extension RegistrationView {
 // MARK: Functions
 extension RegistrationView {
     func handleButtonPressed() {
-        if onboardingState == 2 {
+        if onboardingState == 1 {
             // sign up
             Task {
-                try await viewModel.createUser(withEmail:email, password:password, firstName:firstName, lastName:lastName, age:age, sex:gender, insurance:insurance, policy:policy, address:address, city:city, state:state, zipCode:zipCode)
+                try await viewModel.createUser(withEmail:email, password:password, gender:gender, insuranceStatus:insurance, policyName:policy, service: [""])
             }
         } else {
             withAnimation(.spring()){
@@ -294,7 +288,7 @@ extension RegistrationView {
 // MARK: AuthenticationFormProtocol
 extension RegistrationView: RegistrationFormProtocol {
     var form1IsValid: Bool {
-        return !password.isEmpty && password.count > 5 && !lastName.isEmpty && !firstName.isEmpty && confirmPassword == password
+        return !password.isEmpty && password.count > 5 && confirmPassword == password
 //        return !email.isEmpty && email.contains("@") && !password.isEmpty && password.count > 5 && !lastName.isEmpty && !firstName.isEmpty && confirmPassword == password
     }
     
