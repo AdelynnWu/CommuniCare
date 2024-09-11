@@ -56,7 +56,7 @@ class AuthViewModel: ObservableObject {
 //        print("sign in")
         do {
             print("log in")
-            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            let result = try await Auth.auth().signIn(withEmail: email+"@mydomain.com", password: password)
             self.userSession = result.user
             await fetchUser()
         } catch {
