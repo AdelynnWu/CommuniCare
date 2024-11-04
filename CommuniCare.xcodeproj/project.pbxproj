@@ -56,6 +56,7 @@
 		D874DA6E2C538ABB007F3172 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D874DA6D2C538ABB007F3172 /* UserProfileView.swift */; };
 		D874DA702C538C58007F3172 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D874DA6F2C538C58007F3172 /* SettingsRowView.swift */; };
 		D874DA722C53AA36007F3172 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D874DA712C53AA36007F3172 /* AuthViewModel.swift */; };
+		D878D64A2C914D0E00EB8D73 /* PickerComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D878D6492C914D0E00EB8D73 /* PickerComponents.swift */; };
 		D8E4CA412C2BDC5C00FDE1AA /* CommuniCareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E4CA402C2BDC5C00FDE1AA /* CommuniCareApp.swift */; };
 		D8E4CA432C2BDC5C00FDE1AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E4CA422C2BDC5C00FDE1AA /* ContentView.swift */; };
 		D8E4CA452C2BDC5F00FDE1AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8E4CA442C2BDC5F00FDE1AA /* Assets.xcassets */; };
@@ -103,6 +104,7 @@
 		D874DA6D2C538ABB007F3172 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		D874DA6F2C538C58007F3172 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		D874DA712C53AA36007F3172 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		D878D6492C914D0E00EB8D73 /* PickerComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerComponents.swift; sourceTree = "<group>"; };
 		D8E4CA3D2C2BDC5C00FDE1AA /* CommuniCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuniCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E4CA402C2BDC5C00FDE1AA /* CommuniCareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuniCareApp.swift; sourceTree = "<group>"; };
 		D8E4CA422C2BDC5C00FDE1AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -137,10 +139,10 @@
 				D8E4CA422C2BDC5C00FDE1AA /* ContentView.swift */,
 				D874DA6D2C538ABB007F3172 /* UserProfileView.swift */,
 				D800FE442C2C1D4B00D6AE64 /* HomeView.swift */,
+				D874DA542C43BD46007F3172 /* FilterView.swift */,
 				D874DA482C43AE0D007F3172 /* AccountView.swift */,
 				D874DA4A2C43AE1E007F3172 /* NotificationView.swift */,
 				D874DA4E2C43AEC2007F3172 /* HelpCenterView.swift */,
-				D874DA542C43BD46007F3172 /* FilterView.swift */,
 				D874DA602C4A678D007F3172 /* BookmarkClinicsView.swift */,
 				D800FE422C2C1D1C00D6AE64 /* LocationAccessView.swift */,
 				D874DA4C2C43AE3A007F3172 /* SecurityPrivacyView.swift */,
@@ -234,6 +236,7 @@
 				D874DA692C538208007F3172 /* InputView.swift */,
 				D874DA6F2C538C58007F3172 /* SettingsRowView.swift */,
 				D83E98AB2C574E4100A801AA /* TabBar.swift */,
+				D878D6492C914D0E00EB8D73 /* PickerComponents.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				D874DA492C43AE0D007F3172 /* AccountView.swift in Sources */,
 				D800FE532C2C1E3C00D6AE64 /* RegisterViewViewModel.swift in Sources */,
 				D800FE432C2C1D1C00D6AE64 /* LocationAccessView.swift in Sources */,
+				D878D64A2C914D0E00EB8D73 /* PickerComponents.swift in Sources */,
 				D874DA4B2C43AE1E007F3172 /* NotificationView.swift in Sources */,
 				D874DA5F2C4A38A6007F3172 /* LocationManager.swift in Sources */,
 				D874DA612C4A678D007F3172 /* BookmarkClinicsView.swift in Sources */,
@@ -536,7 +540,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CommuniCare/Preview Content\"";
-				DEVELOPMENT_TEAM = YLRVJFG2A8;
+				DEVELOPMENT_TEAM = 297GXA75P5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your precise location is used to show your location on the map, get directions, estimate travel times, and improve search results.";
@@ -566,7 +570,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CommuniCare/Preview Content\"";
-				DEVELOPMENT_TEAM = YLRVJFG2A8;
+				DEVELOPMENT_TEAM = 297GXA75P5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your precise location is used to show your location on the map, get directions, estimate travel times, and improve search results.";

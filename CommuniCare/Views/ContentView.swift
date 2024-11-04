@@ -16,6 +16,7 @@ struct ContentView: View {
         Group {
             if viewModel.userSession != nil {
                 HomeView(viewModel: HomeViewViewModel())
+                    .environmentObject(FilterViewViewModel())
             } else {
                 StartView()
             }

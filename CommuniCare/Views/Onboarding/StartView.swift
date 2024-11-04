@@ -44,6 +44,7 @@ struct StartView: View {
                     .padding()
                 }
                 
+        
                 NavigationLink(destination: LoginView(), isActive: $logInNavigated) {
                     Button {
                         self.logInNavigated.toggle()

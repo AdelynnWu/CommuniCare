@@ -53,7 +53,6 @@ class AuthViewModel: ObservableObject {
     }
     
     func signIn(withEmail email: String, password: String) async throws {
-//        print("sign in")
         do {
             print("log in")
             let result = try await Auth.auth().signIn(withEmail: email+"@mydomain.com", password: password)

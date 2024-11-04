@@ -15,6 +15,7 @@ import FirebaseFirestore
 class HomeViewViewModel: ObservableObject {
     
     @Published var clinics: [Clinic] = []
+    @Published var searchResults: [Clinic] = []
     
     init() {
         Task {
@@ -36,6 +37,30 @@ class HomeViewViewModel: ObservableObject {
         } catch {
             print("DEBUG: Failed to fetch clinic data \(error.localizedDescription)")
         }
+    }
+    
+    func searchClinicByName(clinicName name: String) async throws {
+        let endpoint = "https://deployed-url/api/clinics/userID=:\(name)"
+        guard let url = URL(string: endpoint) else {
+            throw ClinicError.invalidURL
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw ClinicError.invalidResponse
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+            let result = try decoder.decode(Clinic.self, from: data)
+//            self.searchResults.removeAll()
+            self.searchResults.append(result)
+        } catch {
+            throw ClinicError.invalidData
+        }
+        
+        
     }
     
 }
@@ -137,4 +162,10 @@ struct ClinicCard: View {
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.2), radius: 5, x: 0, y: 5)
     }
+}
+
+enum ClinicError:Error {
+    case invalidURL
+    case invalidResponse
+    case invalidData
 }

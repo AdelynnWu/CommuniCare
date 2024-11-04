@@ -37,7 +37,11 @@ struct RegistrationView: View {
     @State var city: String = ""
     @State var state: String = ""
     @State var zipCode: String = ""
+    @State var service: [String] = []
     
+    // service picker
+    @State private var serviceOptions = ["Cardiovascular Disease", "Chronic Kidney Disease", "Diabetes", "Obesity/Weight-Management", "Lung Disease", "Other", "None of the above"]
+    @State private var isExpanded = false
     
     var body: some View {
         ZStack {
@@ -94,20 +98,34 @@ extension RegistrationView {
             .padding(.leading, 15)
     }
     
-    private var ageField: some View {
+    private var insurancePicker: some View {
         VStack {
-            Text("Age")
+            Text("Insurance Status")
                 .font(.system(size: 15))
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 15)
                 .padding(.leading, 15)
             
-
-            TextField("", value: $age, formatter: NumberFormatter())
-                .padding()
-                .overlay(Color.matchaGreen, in: .rect(cornerRadius: 18).stroke(lineWidth: 2))
-                .padding()
+            Spacer().frame(maxHeight: 0)
+            
+            Picker(selection: $insurance,
+                   label:
+                    Text(insurance.count > 1 ? gender : "Select an insurance status")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .frame(height: 50)
+                        .frame(maxWidth: .infinity)
+                        .background(.white)
+            ){
+                Text("I have an active healthcare insurance").foregroundStyle(Color.black).tag("I have an active healthcare insurance")
+                Text("I do not have healthcare insurance").foregroundStyle(Color.black).tag("I do not have healthcare insurance")
+            }.pickerStyle(MenuPickerStyle())
+                .frame(width: 360, height: 50)
+                .overlay {
+                RoundedRectangle(cornerRadius: 18)
+                 .stroke(Color.matchaGreen, lineWidth: 2)
+                }.padding()
         }
     }
     
@@ -144,6 +162,47 @@ extension RegistrationView {
                 }.padding()
         }
     }
+    
+    private var servicePicker: some View {
+        VStack {
+            // Dropdown menu trigger
+            Button(action: {
+                isExpanded.toggle()
+            }) {
+                HStack {
+                    Text(service.isEmpty ? " Select Services" : service.joined(separator: ", "))
+                    Spacer()
+                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                }
+                .padding()
+                .background(Color(Color.white))
+                .cornerRadius(8)
+                .frame(width: 360, height: 50)
+                .overlay {
+                RoundedRectangle(cornerRadius: 18)
+                 .stroke(Color.matchaGreen, lineWidth: 2)
+                }.padding()
+            }
+
+            // Dropdown menu content
+            if isExpanded {
+                List(serviceOptions, id: \.self) { option in
+                    MultipleSelectionRow(option: option, isSelected: self.service.contains(option)) {
+                        if self.service.contains(option) {
+                            self.service.removeAll { $0 == option }
+                        } else {
+                            self.service.append(option)
+                        }
+                    }
+                }
+                .frame(maxHeight: 150) // Limit the height of the dropdown
+                .cornerRadius(8)
+            }
+        }
+        .padding()
+        .animation(.easeInOut, value: isExpanded) // Smooth transition
+    }
+    
     
     private var registerForm: some View {
         VStack {
@@ -217,9 +276,11 @@ extension RegistrationView {
                 }
                 
                 genderPicker
-                InputView(text: $insurance, title: "Health Insurance Plan", placeholder: "")
+                insurancePicker
+//                InputView(text: $insurance, title: "Health Insurance Plan", placeholder: "")
                 InputView(text: $policy, title: "Policy Name", placeholder: "")
 //                InputView(text: $distance, title: "Distance Preference", placeholder: "")
+                servicePicker
                 nextButton.disabled(!form2IsValid).opacity(form2IsValid ? 1.0 : 0.5)
             }.offset(y: -25)
         }
@@ -270,7 +331,7 @@ extension RegistrationView {
         if onboardingState == 1 {
             // sign up
             Task {
-                try await viewModel.createUser(withEmail:email, password:password, gender:gender, insuranceStatus:insurance, policyName:policy, service: [""])
+                try await viewModel.createUser(withEmail:email, password:password, gender:gender, insuranceStatus:insurance, policyName:policy, service: service)
             }
         } else {
             withAnimation(.spring()){

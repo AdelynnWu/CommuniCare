@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct FilterView: View {
-    @State private var selectedDistance: Set<Distance> = []
-    @State private var selectedLanguage: Set<Language> = []
-    @State private var selectedMedicalHistory: Set<MedicalHistory> = []
+    @EnvironmentObject var viewModel: FilterViewViewModel
     @State var resetNavigated = false
     @State var applyNavigated = false
         
@@ -33,38 +31,20 @@ struct FilterView: View {
                     .background(Color.matchaGreen)
                     
                     // Distance
-                    Section(header: Text("Distance Willing to Travel").bold()) {
+                    Section(header: Text("Clinical Services Provided").bold()) {
                         VStack(alignment: .leading) {
-                            ForEach(Distance.allCases, id: \.self) { distance in
-                                CheckBoxView(isChecked: $selectedDistance, value: distance, text: distance.rawValue)
+                            ForEach(ClinicalService.allCases, id: \.self) { service in
+                                CheckBoxView(isChecked: $viewModel.selectedServices, value: service, text: service.rawValue)
                             }
                         }.offset(y: -15)
                     }
                     .padding()
                     
-                    // Language
-//                    Section(header: Text("Language").bold()) {
-//                        VStack(alignment: .leading) {
-//                            Picker("Language", selection: $selectedLanguage) {
-//                                ForEach(["English", "Spanish", "French"], id: \.self) { language in
-//                                    Text(language).tag(language)
-//                                }
-//                            }
-//                            .pickerStyle(MenuPickerStyle())
-//                            .padding()
-//                            .overlay(
-//                                RoundedRectangle(cornerRadius:30).stroke(Color.matchaGreen, lineWidth: 1)
-//                                    .frame(width: 150, height: 50)
-//                            ).offset(x: 10, y: -30)
-//                        }
-//                    }
-                    //.padding()
-                    
-                    // Medical History
+                    // Lznguage
                     Section(header: Text("Language").bold()) {
                         VStack(alignment: .leading) {
                             ForEach(Language.allCases, id: \.self) { language in
-                                CheckBoxView(isChecked: $selectedLanguage, value: language, text: language.rawValue)
+                                CheckBoxView(isChecked: $viewModel.selectedLanguages, value: language, text: language.rawValue)
                             }
                         }
                     }
@@ -77,9 +57,8 @@ struct FilterView: View {
                         NavigationLink(destination: HomeView(viewModel: HomeViewViewModel()).navigationBarBackButtonHidden(true), isActive: $resetNavigated){
                             Button(action: {
                                 // Reset Action
-                                selectedDistance.removeAll()
-                                selectedLanguage.removeAll()
-                                selectedMedicalHistory.removeAll()
+                                viewModel.selectedServices.removeAll()
+                                viewModel.selectedLanguages.removeAll()
                                 self.resetNavigated.toggle()
                             }) {
                                 Text("Reset")
@@ -93,19 +72,12 @@ struct FilterView: View {
                             }.offset(x: 35)
                         }
                         Spacer()
-//                        Button("Apply"){
-//                            // apply filter
-//                        }.buttonStyle(.borderedProminent)
-//                            .tint(Color.matchaGreen)
-//                            .cornerRadius(20)
-//                            .frame(width: 100, height: 40)
-//                            .padding(.horizontal, 50)
-//                            .padding(.vertical, 3)
                         
                         
                         NavigationLink(destination: HomeView(viewModel: HomeViewViewModel()).navigationBarBackButtonHidden(true), isActive: $applyNavigated){
                             Button{
                                 self.applyNavigated.toggle()
+                                
                             } label: {
                                 Text("Apply")
                                     .frame(width: 100, height: 40)
