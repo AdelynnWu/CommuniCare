@@ -37,6 +37,17 @@ class FilterViewViewModel: ObservableObject {
             return hasMatchingService
     }
     
+    func containsService(program: Program) -> Bool {
+        let selectedServiceStrings = Set(selectedServices.map { $0.rawValue.lowercased() })
+        
+        // Check if clinic services match any selected service
+        let clinicServicesSet = Set(program.services.map({ $0.lowercased() }))
+        let hasMatchingService = !selectedServiceStrings.isDisjoint(with: clinicServicesSet)
+        
+//        print("Selected services: \(selectedServiceStrings), Clinic services: \(clinicServicesSet), Match found: \(hasMatchingService)")
+        return hasMatchingService
+    }
+    
     func containsLanguage(clinic: Clinic) -> Bool {
         // convert enum to string
 //        let selectedLanguageStrings = Set(selectedLanguages.map { $0.rawValue })
@@ -52,6 +63,24 @@ class FilterViewViewModel: ObservableObject {
             let hasMatchingLanguage = !selectedLanguageStrings.isDisjoint(with: clinicLanguagesSet)
             
             print("Selected languages: \(selectedLanguageStrings), Clinic languages: \(clinicLanguagesSet), Match found: \(hasMatchingLanguage)")
+            return hasMatchingLanguage
+    }
+    
+    func containsLanguage(program: Program) -> Bool {
+        // convert enum to string
+//        let selectedLanguageStrings = Set(selectedLanguages.map { $0.rawValue })
+//        print(selectedLanguageStrings)
+//        return clinic.languages.contains { language in
+//                selectedLanguageStrings.contains(language)
+//        }
+        // Convert selected languages to strings for comparison
+        let selectedLanguageStrings = Set(selectedLanguages.map { $0.rawValue.lowercased() })
+            
+            // Check if clinic languages match any selected language
+        let clinicLanguagesSet = Set(program.languages.map({ $0.lowercased() }))
+            let hasMatchingLanguage = !selectedLanguageStrings.isDisjoint(with: clinicLanguagesSet)
+            
+//            print("Selected languages: \(selectedLanguageStrings), Clinic languages: \(clinicLanguagesSet), Match found: \(hasMatchingLanguage)")
             return hasMatchingLanguage
     }
 }
@@ -75,7 +104,7 @@ enum MedicalHistory: String, CaseIterable {
 enum Language: String, CaseIterable {
     case english = "English"
     case spanish = "Spanish"
-    case madarin = "Mandarin"
+    case chinese = "Chinese"
     case others = "Others"
 }
 

@@ -48,15 +48,16 @@ struct UserProfileView: View {
                             Text("1.0.0")
                                 .font(.subheadline).foregroundStyle(.gray)
                         }
-                        
-                        SettingsRowView(imageName: "gear", title: "Help Center", tintColor: Color(.systemGray))
+                        // TODO: Help Center
+//                        SettingsRowView(imageName: "gear", title: "Help Center", tintColor: Color(.systemGray))
                     }
                     Section("Account") {
-                        Button {
-                            // go to account view
-                        } label: {
-                            SettingsRowView(imageName: "gear", title: "Account Settings", tintColor: Color(.systemGray))
-                        }
+                        // TODO: Account setting
+//                        Button {
+//                            // go to account view
+//                        } label: {
+//                            SettingsRowView(imageName: "gear", title: "Account Settings", tintColor: Color(.systemGray))
+//                        }
                         Button {
                             // sign out
                             viewModel.signOut()
@@ -149,13 +150,13 @@ extension UserProfileView {
             Rectangle().frame(width: UIScreen.main.bounds.width, height: 66)
                 .foregroundColor(Color.offwhite)
             HStack {
-                Spacer()
-                NavigationLink(destination: BookmarkClinicsView()){
-                    Image(systemName: "bookmark")
-                        .resizable()
-                        .frame(width: 25, height: 27, alignment: .center)
-                        .foregroundStyle(Color.matchaGreen)
-                }
+//                Spacer()
+//                NavigationLink(destination: BookmarkClinicsView()){
+//                    Image(systemName: "bookmark")
+//                        .resizable()
+//                        .frame(width: 25, height: 27, alignment: .center)
+//                        .foregroundStyle(Color.matchaGreen)
+//                }
                 Spacer()
                 NavigationLink(destination: HomeView(viewModel: HomeViewViewModel()).navigationBarBackButtonHidden(true)){
                     Image(systemName: "house")
